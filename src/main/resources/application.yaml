@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: bookstore-management
+
+  datasource:
+    url: jdbc:h2:mem:BookStoreDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+
+  h2:
+    console:
+      enabled: true
+
+springdoc:
+  api-docs:
+    enabled: true          # Enable /v3/api-docs OPENAPI JSON
+    path: /v3/api-docs     # Optional: customize path
+  swagger-ui:
+    enabled: true          # Enable Swagger UI
+    path: /swagger-ui.html      # UI will be at http://localhost:8080/swagger-ui/index.html
+    operationsSorter: method
+    tagsSorter: alpha
+  group-configs:
+    - group: books
+      paths-to-match: /api/books/**
+
+
+
+
+
